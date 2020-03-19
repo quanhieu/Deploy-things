@@ -1,5 +1,5 @@
-Docker	
-	║   	─SSL─
+    Docker	
+	║   			─SSL─
 	║	 	NGINX							 PM2
 	║		│					React app	  │
 	║       	├── react  ───────────────────────────────────────────────┤
