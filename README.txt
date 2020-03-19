@@ -33,7 +33,7 @@ Docker
 	╠═══╧══ Dockerfile-setup-mongo
 	║
 	╚═ docker-compose.yml
-	 
+
 ===================================================================================
 NGINX
 Về cơ bản, NGINX cũng hoạt động tương tự như các web server khác. Khi bạn mở một trang web, trình duyệt của bạn sẽ liên hệ với server chứa website đó. Server sẽ tìm kiếm đúng file yêu cầu của website và gửi về cho bạn. Đây là một trình tự xử lý dữ liệu single – thread, nghĩa là các bước được thực hiện theo một trình tự duy nhất. Mỗi yêu cầu sẽ được tạo một thread riêng.
