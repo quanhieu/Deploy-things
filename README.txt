@@ -35,8 +35,10 @@
 	╚═ docker-compose.yml
 
 
-===================================================================================
+========================================================================================================================================
+
 NGINX
+
 Về cơ bản, NGINX cũng hoạt động tương tự như các web server khác. Khi bạn mở một trang web, trình duyệt của bạn sẽ liên hệ với server chứa website đó. Server sẽ tìm kiếm đúng file yêu cầu của website và gửi về cho bạn. Đây là một trình tự xử lý dữ liệu single – thread, nghĩa là các bước được thực hiện theo một trình tự duy nhất. Mỗi yêu cầu sẽ được tạo một thread riêng.
 - Tuy nhiên, NGINX hoạt động theo kiến trúc bất đồng bộ (asynchronous) hướng sự kiện (event driven). Nó cho phép các threads tương đồng được quản lý trong một tiến process. Mỗi process hoạt động sẽ bao gồm các thực thể nhỏ hơn, gọi là worker connections dùng để xử lý tất cả threads.
 - Worker connections sẽ gửi các yêu cầu cho worker process, worker process sẽ gửi nó tới master process, và master process sẽ trả lời các yêu cầu đó. Đó là lý do vì sao một worker connection có thể xử lý đến 1024 yêu cầu tương tự nhau. Nhờ vậy, NGINX có thể xử lý hàng ngàn yêu cầu khác nhau cùng một lúc.
@@ -170,7 +172,9 @@ I choise Ubuntu18.04
 
 6. Create UNIX account
 
-7. Open wsl and enter:
+7. Open wsl or open cmd or windowns powershell:
+wsl
+
 sudo apt-get update
 
 sudo apt-get upgrade
@@ -250,10 +254,12 @@ logs\error.log
 
 
 III. Nginx in docker
+-- Updating --
 
+========================================================================================================================================
 
-===================================================================================
 PM2
+
 Tự động chạy ứng dụng Nodejs, tự động restart khi lỗi. PM2 còn kèm theo nhiều plugin với nhiều chức năng như: cân bằng tải, update source no zero down time (cập nhật mã nguồn mà không làm tắt server), scale (tự động mở rộng khả năng chịu tải), tự động cập nhật source code khi Git được update, …
 
 - Quản lý các process, bao gồm tự động restart app khi bị chết hoặc reboot hệ thống.
