@@ -1,32 +1,31 @@
-Docker	  
-	║    ─SSL─
-	║	 NGINX									PM2
-	║		│					React app		 │
-	║       ├── react  ──────────────────────────┤
-	║		│   │								 │	
-	╠═══════╪═══╧══ Dockerfile-setup-react		 │
-	║		│									 │	
-	║		│ 					First server	 │
-	║		├── node   ──────────────────────────┤
-	║		│	├─ api/							 │	
-	║		│   │								 │
-	╠═══════╪═══╧══ Dockerfile-setup-node	     │
-	║		│									 │
-	║		│					Second server    │
-	║		├── node   ──────────────────────────┤
-	║		│	├─ api/							 │	
-	║		│	│								 │
-	╠═══════╪═══╧══ Dockerfile-setup-node	     │
-	║		│								     │
-	║		│					Third server     │
-	║       └── node   ──────────────────────────┤
-	║			├─ api/							 │	
-	║			│								 │	
-	╠═══════════╧══ Dockerfile-setup-node	     │				     
-	║											 │Mobile
-	║											 └────────react-native
-	║													  │
-	╠═════════════════════════════════════════════════════╧═Dockerfile-setup-react
+║   		─SSL─
+	║	 	NGINX							 PM2
+	║		│					React app	  │
+	║       	├── react  ───────────────────────────────────────────────┤
+	║		│   │							  │	
+	╠═══════════════╪═══╧══ Dockerfile-setup-react		 		  │
+	║		│							  │	
+	║		│ 					First server	  │
+	║		├── node   ───────────────────────────────────────────────┤
+	║		│   ├─ api/						  │	
+	║		│   │							  │
+	╠═══════════════╪═══╧══ Dockerfile-setup-node	     			  │
+	║		│							  │
+	║		│					Second server     │
+	║		├── node   ───────────────────────────────────────────────┤
+	║		│   ├─ api/						  │	
+	║		│   │							  │
+	╠═══════════════╪═══╧══ Dockerfile-setup-node	     			  │
+	║		│							  │
+	║		│					Third server      │
+	║       	└── node   ───────────────────────────────────────────────┤
+	║			├─ api/						  │	
+	║			│						  │	
+	╠═══════════════════════╧══ Dockerfile-setup-node	   		  │	
+	║									  │ Mobile
+	║									  └──────── react-native
+	║											│
+	╠═══════════════════════════════════════════════════════════════════════════════════════╧═Dockerfile-setup-react
 	║   mongo											  	
 	║   ├─ run.sh 										  
 	║   ├─ set_mongodb_password.sh
