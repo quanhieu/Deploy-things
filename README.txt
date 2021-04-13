@@ -36,7 +36,152 @@
 
 
 ========================================================================================================================================
+DOCKER
 
+1. Docker là gì
+Docker không phải là một ngôn ngữ lập trình hay Framework. Docker là một công cụ để build, chạy và deploy application của bạn lên bất cứ môi trường nào. Ở đây nói bất kì môi trường nào thì không đúng, bởi vì môi trường đấy sẽ cần phải cài đặt Docker để chạy được application của bạn. Công nghệ cốt lõi mà Docker sử dụng là Container Technology. Trước khi Docker ra mắt Container đã là một best-practice mà nhiều công ty to đã sử dụng. Tuy nhiên để tạo được một Container Bạn sẽ cần phải có kiến thức về Hệ điều hành và Security. Ngoài ra thì quá trình tạo rất phức tạp và dễ mắc phải sai lầm. Nhưng điều đấy đã hoàn toàn thay đổi khi Docker ra đời. Bạn có thể tạo và sử dụng Container Mà hoàn toàn không cần phải có kiến thức Về container technology. Tuy nhiên Container mà bạn tạo vẫn theo chuẩn của Best-Practice. Đây chính là lí do vì sao Docker lại trở nên phổ biến nhanh như vậy.
+
+2. Lợi ích khi sử dụng Docker
+Trước khi có docker thì để quản lí setup và config trên nhiều môi trường khác nhau rất phức tạp. 
+Khi sử dụng docker
+- Bạn sẽ tiết kiệm được thời gian quản lý setup và configuration
+- Không phải lo lắng về Application Code sẽ được chạy ở hệ điều hành nào Ví dụ như là Ubuntu, CentOS hay Debian. Bởi vì chỉ cần môi trường đấy có Docker Runtime 
+hay là đã được cài Docker. Bạn có thể chạy Application Code của bạn thông qua Docker Image
+
+3. Một số use-case cơ bản khi sử dụng docker
+- Prototype Application - Sandbox Environment 
+- Continuous Delivery - DevOps CD Pipeline
+- Microservice Pattern - Deploy Kubernetes
+
+4. Các khác niệm quan trọng Docker
+<Container>
+- Container là một instance được sinh ra từ Docker Image
+- Mỗi khi bạn chạy command, Mỗi Image có thể được chạy bởi nhiều Container
+- Lấy ví dụ ở trong lập trình hướng đối tượng (OOP)
++ <Image>là class
++ <Container> sẽ là Object
+- Mỗi container sẽ chạy tách biệt với nhau
+
+<Image>
+https://docker-ghichep.readthedocs.io/en/latest/ghichep-docker-images/
+- Image sẽ là template được sử dụng để tạo Container
+- Trong Image sẽ chưa tất cả các Dependency Libraries, packages, configuration files và application code  để có thể chạy được application của bạn
+- Một image sẽ được cấu thành bởi nhiều Layer (các lớp). Mỗi layer sẽ tương ứng với một thay đổi trên FileSystem tính từ Base Image mà bạn sử dụng
+<Image layers>
+- là cơ chế cực kỳ khi sử dụng docker vì docker sẽ tái sử dụng image layer để giảm thời gian build docker image cũng như là size curl của 1 docker image
+
+<Volume>
+https://docker-ghichep.readthedocs.io/en/latest/volume/
+- Volume trong Docker được dùng để chia sẻ dữ liệu cho container.
+
+5. Docker Architecture
+Ở trong Docker chúng ta có 2 thành phần chính là Docker Daemon và Docker Client:
+- Docker Daemon là một Process chạy ngầm ở Background thường sẽ là Systemd Service. 
++ Docker Daemon sẽ cung cấp 1 REST API để Docker Client giao tiếp và thực hiện các tác vụ cần thiết.
++ Docker Daemon sẽ quản lý quyền truy cập và quản lý trạng thái của các container và image trên hệ thống.
++ Docker daemon mặc định sẽ sử dụng một UNIX Socket, mà chỉ User 'root' và các user thuộc Group 'docker' mới có thể access tới socket này
++ Ngoài ra bạn có thể đổi UNIX Socket này thành TCP Port để các application bên ngoài hệ thống có thể truy cập tới Docker Daemon.
+
+- Docker Client: chính là các command mà bạn gõ vào Terminal
++ Docker Client sẽ giao tiếp với Docker Daemon bằng cách gửi HTTP Request tới REST API mà Docker Daemon cung cấp.
+
+Ngoài Docker Daemon và Client chúng ta sẽ có một thành phần khác nữa gọi là Docker Registry. Đây là một service để lưu giữ các Docker Image. Nếu Docker Daemon của bạn có quyền truy cập tới một Docker Registry tải các Docker Image được lưu giữ ở trên Docker Registry đấy về máy tính của bạn. Điền hình chúng ta có Docker Hub
+- Public Registry được quản lý bởi Docker (công ty). Ngoài ra bạn có thể sử dụng các Docker Registry được cung cấp từ các Cloud Provider - AWS, GCP, Azure
+- Bạn cũng có thể cài đặt 1 Docker Registry - On-premis - Private Network trong công ty bạn
+
+6. Giải thích Dockerfile
+https://docker-ghichep.readthedocs.io/en/latest/dockerfile/
+Dockerfile là một chuỗi instruction mà bạn định nghĩa
+Dockerfile cũng liên quan đến 1 khái niệm gọi là infrastructer at code
+Để viết dockerfile nên có kiến thức về LINUX COMMANDS và SHELL SCRIPTING
+
+- FROM: chỉ định base image mà mình dùng - <image-name>:<tag>
++ bese practice: nên chỉ định tag và trành dùng tag latest để duy trì ổn định cho app
+- LABEL: dùng để add các metadata vào image
+- ENV: tạo enviroment variable mà container sẽ sử dụng
+- WORKDIR: chỉ định directory hay context để docker chặn các instruction nằm phía sau workdir ở tại directory này
+- VOLUME: dùng để chỉ định 1 mount poin tức là 1 directory để lưu trữ dữ liệu bên trong container. Vì mặc định khi container bị xóa thì dữ liệu mà container đã lưu vào file system (databse chẳng hạn) sẽ bị mất theo. Vậy muốn lưu dữ liệu thì nên tạo VOLUME và lưu dữ liệu vào bên trong VOLUME để tái sử dụng
+- EXPOSE: để chỉ định cổng port mà container sẽ chờ request tại port đó
+- COPY: copy 1 file or host machine từ directory vào trong container
+- ADD: chức năng gần giống COPY nhưng ADD có thể tải 1 file từ url mà bạn chỉ định bên trong container
+- ARG: tùy chỉnh dockerfile để truyền vào dockerfile 1 số variable
+- USER: nên tránh sử dụng user root
+- RUN: chạy linux comand
++ best practice: khi 1 lệnh run chạy sẽ tạo ra 1 image layer, giả sử trong dockerfile có nhiều lệnh run, nếu được hãy gộp các lệnh run vào 1 để giảm thiếu số lượng image layer sinh ra. Nếu làm được sẽ tiết kiệm được size hay curl của image, giảm thời gian build docker image
+- CMD: định nghĩ 1 command sẽ chạy chi container start
+- ENTRYPOINT: giống CMD
++nhưng khi chạy song song CMD và ENTRYPOINT thì ENTRYPOINT thành command mà container chạy và CMD thành tham số cho command đấy
+
+-> Best-practice khi viết Dockerfile: Thứ tự viết các instruction chia làm 2 phần: ít thay đổi và hay thay đổi. Thì instruction ít thay đổi nên đặt phía trên và instruction hay thay đổi nên đặt phía dưới. Lý do làm vậy vì docker sẽ tiết kiệm thời gian sync lại các image layer cho nên sẽ tiết kiệm thời gian build lại image
+
+7. Docker command
+https://docker-ghichep.readthedocs.io/en/latest/ghichep-lenh-docker/
+- Build Dockerfile: 
++ docker image build -t <image-name><context>
++ vd: docker image build -t demo-backend .
+
+- Check docker image on host machine
++ docker image ls
+
+- Check image layers of every docker image
++ docker inspect image <image-name>
++ vd: docker inspect image demo-backend
+
+- Run a command in a new container
++ docker container run [OPTIONS] IMAGE [COMMAND] [ARG...]
+
+- Check docker container running on system
++ docker container ls
+
+- Check docker container running and stop
++ docker container ls -a
+
+- Start docker container had stopped yet
++ docker container start <docker-name>
++ vd: docker container start demo-backend
+
+8. Lợi ích của Dockerfile - Inrastructure as Code + Immutable Infrastructure
+- Inrastructure as Code
++ Quản lý run-time enviroment bằng code - Dockerfile
++ Đóng gói Application code cùng với run-time enviroment + configuration trong 1 object là Docker image. Sau đó sử dụng docker image để deploy lên các server. Lúc này docker image không thay đổi nên application sẽ chạy ổn định trên các môi trường
+-  Immutable Infrastructure
++ Đóng gọi trạng thái cuối cùng sau khi cài đặt run-time enviroment và configuration và application code và tạo thành image để deploy lên khác môi trường khác => Infrastructure sẽ không thay đổi
+
+=> Đây là 2 khái niệm quan trọng giúp application chạy ổn định giữa các môi trường 
+
+9. docker-compose.yaml
+định nghĩa các thành phần: <Version>, <Services>, <Networks>, <Volumes>
+- version: '3'
+- services
++ service-name là alias mà docker-compose tự động networking giữa các service với nhau. Sau khi mapping thì có thể sử dụng tên service làm host name của container chạy service đấy
++ volumes
++ ports: 8080: 80 - Forwards the exposed port 80 của container sang port 8080 trên host machine.
++ depends_on: định nghĩa service chạy trước khi chạy service hiện tại
++ restart: định nghĩa restart hay không khi gặp lỗi 
++ network
+
+10. docker-compose comands
+- docker-compose up : run docker ở chế độ dettack-mode - Ctrl+C để tắt
+- docker-compose up -d : run docker ở chế độ background
+- docker-compose down
+- docker container ps
+- docker-compose ps
+- docker-compose config
+- docker-compose config -q
+- docker volume ls
+- docker inspect value <volume-name>
+- docker-compose top
+- docker-compose log
+- docker container exec iit <container ID><shell container>
+- docker-compose rm
+- docker logs -f <docker-name>
+
+Reference:
+# https://youtube.com/playlist?list=PL28xQzrHZLIUMesZIulyOY0UEbUJhaQd6
+# https://github.com/hocchudong/ghichep-docker
+# https://docker-ghichep.readthedocs.io/en/latest/README/
+# https://github.com/chesterheng/microservices-node-react/blob/master/section-03.md
+========================================================================================================================================
 NGINX
 
 Về cơ bản, NGINX cũng hoạt động tương tự như các web server khác. Khi bạn mở một trang web, trình duyệt của bạn sẽ liên hệ với server chứa website đó. Server sẽ tìm kiếm đúng file yêu cầu của website và gửi về cho bạn. Đây là một trình tự xử lý dữ liệu single – thread, nghĩa là các bước được thực hiện theo một trình tự duy nhất. Mỗi yêu cầu sẽ được tạo một thread riêng.
