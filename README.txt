@@ -35,8 +35,9 @@
 	╚═ docker-compose.yml
 
 
-========================================================================================================================================
-DOCKER
+===============================================================================================================================
+
+## DOCKER
 
 1. Docker là gì
 Docker không phải là một ngôn ngữ lập trình hay Framework. Docker là một công cụ để build, chạy và deploy application của bạn lên bất cứ môi trường nào. Ở đây nói bất kì môi trường nào thì không đúng, bởi vì môi trường đấy sẽ cần phải cài đặt Docker để chạy được application của bạn. Công nghệ cốt lõi mà Docker sử dụng là Container Technology. Trước khi Docker ra mắt Container đã là một best-practice mà nhiều công ty to đã sử dụng. Tuy nhiên để tạo được một Container Bạn sẽ cần phải có kiến thức về Hệ điều hành và Security. Ngoài ra thì quá trình tạo rất phức tạp và dễ mắc phải sai lầm. Nhưng điều đấy đã hoàn toàn thay đổi khi Docker ra đời. Bạn có thể tạo và sử dụng Container Mà hoàn toàn không cần phải có kiến thức Về container technology. Tuy nhiên Container mà bạn tạo vẫn theo chuẩn của Best-Practice. Đây chính là lí do vì sao Docker lại trở nên phổ biến nhanh như vậy.
@@ -179,10 +180,12 @@ https://docker-ghichep.readthedocs.io/en/latest/ghichep-lenh-docker/
 Reference:
 # https://youtube.com/playlist?list=PL28xQzrHZLIUMesZIulyOY0UEbUJhaQd6
 # https://github.com/hocchudong/ghichep-docker
+# https://github.com/hungviet99/ghichep_docker
 # https://docker-ghichep.readthedocs.io/en/latest/README/
 # https://github.com/chesterheng/microservices-node-react/blob/master/section-03.md
-========================================================================================================================================
-NGINX
+===============================================================================================================================
+
+## NGINX
 
 Về cơ bản, NGINX cũng hoạt động tương tự như các web server khác. Khi bạn mở một trang web, trình duyệt của bạn sẽ liên hệ với server chứa website đó. Server sẽ tìm kiếm đúng file yêu cầu của website và gửi về cho bạn. Đây là một trình tự xử lý dữ liệu single – thread, nghĩa là các bước được thực hiện theo một trình tự duy nhất. Mỗi yêu cầu sẽ được tạo một thread riêng.
 - Tuy nhiên, NGINX hoạt động theo kiến trúc bất đồng bộ (asynchronous) hướng sự kiện (event driven). Nó cho phép các threads tương đồng được quản lý trong một tiến process. Mỗi process hoạt động sẽ bao gồm các thực thể nhỏ hơn, gọi là worker connections dùng để xử lý tất cả threads.
@@ -401,9 +404,9 @@ logs\error.log
 III. Nginx in docker
 -- Updating --
 
-========================================================================================================================================
+===============================================================================================================================
 
-PM2
+## PM2
 
 Tự động chạy ứng dụng Nodejs, tự động restart khi lỗi. PM2 còn kèm theo nhiều plugin với nhiều chức năng như: cân bằng tải, update source no zero down time (cập nhật mã nguồn mà không làm tắt server), scale (tự động mở rộng khả năng chịu tải), tự động cập nhật source code khi Git được update, …
 
