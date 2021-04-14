@@ -54,24 +54,24 @@ Khi sử dụng docker
 - Microservice Pattern - Deploy Kubernetes
 
 4. Các khác niệm quan trọng Docker
-<Container>
+`<Container>`
 - Container là một instance được sinh ra từ Docker Image
 - Mỗi khi bạn chạy command, Mỗi Image có thể được chạy bởi nhiều Container
 - Lấy ví dụ ở trong lập trình hướng đối tượng (OOP)
-+ <Image>là class
-+ <Container> sẽ là Object
++ `<Image>`là class
++ `<Container>` sẽ là Object
 - Mỗi container sẽ chạy tách biệt với nhau
 
-<Image>
-> `https://docker-ghichep.readthedocs.io/en/latest/ghichep-docker-images/`
+`<Image>`
+https://docker-ghichep.readthedocs.io/en/latest/ghichep-docker-images/
 - Image sẽ là template được sử dụng để tạo Container
 - Trong Image sẽ chưa tất cả các Dependency Libraries, packages, configuration files và application code  để có thể chạy được application của bạn
 - Một image sẽ được cấu thành bởi nhiều Layer (các lớp). Mỗi layer sẽ tương ứng với một thay đổi trên FileSystem tính từ Base Image mà bạn sử dụng
-<Image layers>
+`<Image layers>`
 - là cơ chế cực kỳ khi sử dụng docker vì docker sẽ tái sử dụng image layer để giảm thời gian build docker image cũng như là size curl của 1 docker image
 
-<Volume>
-> `https://docker-ghichep.readthedocs.io/en/latest/volume/`
+`<Volume>`
+https://docker-ghichep.readthedocs.io/en/latest/volume/
 - Volume trong Docker được dùng để chia sẻ dữ liệu cho container.
 
 5. Docker Architecture
@@ -90,12 +90,12 @@ Ngoài Docker Daemon và Client chúng ta sẽ có một thành phần khác n�
 - Bạn cũng có thể cài đặt 1 Docker Registry - On-premis - Private Network trong công ty bạn
 
 6. Giải thích Dockerfile
-> `https://docker-ghichep.readthedocs.io/en/latest/dockerfile/`
+https://docker-ghichep.readthedocs.io/en/latest/dockerfile/
 Dockerfile là một chuỗi instruction mà bạn định nghĩa
 Dockerfile cũng liên quan đến 1 khái niệm gọi là infrastructer at code
 Để viết dockerfile nên có kiến thức về LINUX COMMANDS và SHELL SCRIPTING
 
-- FROM: chỉ định base image mà mình dùng - <image-name>:<tag>
+- FROM: chỉ định base image mà mình dùng - `<image-name>:<tag>`
 + bese practice: nên chỉ định tag và trành dùng tag latest để duy trì ổn định cho app
 - LABEL: dùng để add các metadata vào image
 - ENV: tạo enviroment variable mà container sẽ sử dụng
@@ -115,16 +115,16 @@ Dockerfile cũng liên quan đến 1 khái niệm gọi là infrastructer a
 -> Best-practice khi viết Dockerfile: Thứ tự viết các instruction chia làm 2 phần: ít thay đổi và hay thay đổi. Thì instruction ít thay đổi nên đặt phía trên và instruction hay thay đổi nên đặt phía dưới. Lý do làm vậy vì docker sẽ tiết kiệm thời gian sync lại các image layer cho nên sẽ tiết kiệm thời gian build lại image
 
 7. Docker command
-> `https://docker-ghichep.readthedocs.io/en/latest/ghichep-lenh-docker/`
+https://docker-ghichep.readthedocs.io/en/latest/ghichep-lenh-docker/
 - Build Dockerfile: 
-+ docker image build -t <image-name><context>
++ docker image build -t `<image-name><context>`
 + vd: docker image build -t demo-backend .
 
 - Check docker image on host machine
 + docker image ls
 
 - Check image layers of every docker image
-+ docker inspect image <image-name>
++ docker inspect image `<image-name>`
 + vd: docker inspect image demo-backend
 
 - Run a command in a new container
@@ -137,7 +137,7 @@ Dockerfile cũng liên quan đến 1 khái niệm gọi là infrastructer a
 + docker container ls -a
 
 - Start docker container had stopped yet
-+ docker container start <docker-name>
++ docker container start `<docker-name>`
 + vd: docker container start demo-backend
 
 8. Lợi ích của Dockerfile - Inrastructure as Code + Immutable Infrastructure
@@ -150,7 +150,7 @@ Dockerfile cũng liên quan đến 1 khái niệm gọi là infrastructer a
 => Đây là 2 khái niệm quan trọng giúp application chạy ổn định giữa các môi trường 
 
 9. docker-compose.yaml
-định nghĩa các thành phần: <Version>, <Services>, <Networks>, <Volumes>
+định nghĩa các thành phần: `<Version>, <Services>, <Networks>, <Volumes>`
 - version: '3'
 - services
 + service-name là alias mà docker-compose tự động networking giữa các service với nhau. Sau khi mapping thì có thể sử dụng tên service làm host name của container chạy service đấy
@@ -169,12 +169,12 @@ Dockerfile cũng liên quan đến 1 khái niệm gọi là infrastructer a
 - docker-compose config
 - docker-compose config -q
 - docker volume ls
-- docker inspect value <volume-name>
+- docker inspect value `<volume-name>`
 - docker-compose top
 - docker-compose log
-- docker container exec iit <container ID><shell container>
+- docker container exec iit `<container ID><shell container>`
 - docker-compose rm
-- docker logs -f <docker-name>
+- docker logs -f `<docker-name>`
 
 Reference:
  [**FullStacKAGE-Go Pro Docker**](https://youtube.com/playlist?list=PL28xQzrHZLIUMesZIulyOY0UEbUJhaQd6)
