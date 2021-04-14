@@ -58,7 +58,7 @@ Khi sử dụng docker
 
 4. Các khác niệm quan trọng Docker
 
-- ***`<Container>`***
+***`<Container>`***
 - Container là một instance được sinh ra từ Docker Image
 - Mỗi khi bạn chạy command, Mỗi Image có thể được chạy bởi nhiều Container
 - Lấy ví dụ ở trong lập trình hướng đối tượng (OOP)
@@ -66,7 +66,7 @@ Khi sử dụng docker
 	- `<Container>` sẽ là Object
 - Mỗi container sẽ chạy tách biệt với nhau
 
-- ***`<Image>`***
+***`<Image>`***
 - [ ] https://docker-ghichep.readthedocs.io/en/latest/ghichep-docker-images/
 - Image sẽ là template được sử dụng để tạo Container
 - Trong Image sẽ chưa tất cả các Dependency Libraries, packages, configuration files và application code  để có thể chạy được application của bạn
@@ -75,7 +75,7 @@ Khi sử dụng docker
 - ***`<Image layers>`***
 - là cơ chế cực kỳ khi sử dụng docker vì docker sẽ tái sử dụng image layer để giảm thời gian build docker image cũng như là size curl của 1 docker image
 
-- ***`<Volume>`***
+***`<Volume>`***
 - [ ] https://docker-ghichep.readthedocs.io/en/latest/volume/
 - Volume trong Docker được dùng để chia sẻ dữ liệu cho container.
 
