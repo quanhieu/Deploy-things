@@ -35,7 +35,7 @@
 	╚═ docker-compose.yml
 
 
-===============================================================================================================================
+====================================================================================================================
 
 ## DOCKER
 
@@ -46,8 +46,7 @@ Docker không phải là một ngôn ngữ lập trình hay Framework. Docker l�
 Trước khi có docker thì để quản lí setup và config trên nhiều môi trường khác nhau rất phức tạp. 
 Khi sử dụng docker
 - Bạn sẽ tiết kiệm được thời gian quản lý setup và configuration
-- Không phải lo lắng về Application Code sẽ được chạy ở hệ điều hành nào Ví dụ như là Ubuntu, CentOS hay Debian. Bởi vì chỉ cần môi trường đấy có Docker Runtime 
-hay là đã được cài Docker. Bạn có thể chạy Application Code của bạn thông qua Docker Image
+- Không phải lo lắng về Application Code sẽ được chạy ở hệ điều hành nào Ví dụ như là Ubuntu, CentOS hay Debian. Bởi vì chỉ cần môi trường đấy có Docker Runtime hay là đã được cài Docker. Bạn có thể chạy Application Code của bạn thông qua Docker Image
 
 3. Một số use-case cơ bản khi sử dụng docker
 - Prototype Application - Sandbox Environment 
@@ -183,7 +182,8 @@ Reference:
 # https://github.com/hungviet99/ghichep_docker
 # https://docker-ghichep.readthedocs.io/en/latest/README/
 # https://github.com/chesterheng/microservices-node-react/blob/master/section-03.md
-===============================================================================================================================
+
+====================================================================================================================
 
 ## NGINX
 
@@ -404,7 +404,7 @@ logs\error.log
 III. Nginx in docker
 -- Updating --
 
-===============================================================================================================================
+====================================================================================================================
 
 ## PM2
 
