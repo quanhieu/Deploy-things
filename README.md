@@ -337,7 +337,7 @@ sudo apt-get update
 
 sudo apt-get install -y nginx
 
-note: Your nginx will install at C:\Users\<Username>\AppData\Local\Packages\CanonicalGroupLimited.Ubuntu18.04onWindows_79rhkp1fndgsc\LocalState\rootfs\etc\nginx
+note: Your nginx will install at C:\Users\`<Username>`\AppData\Local\Packages\CanonicalGroupLimited.Ubuntu18.04onWindows_79rhkp1fndgsc\LocalState\rootfs\etc\nginx
 
 8. Start nginx by:
 sudo service nginx start 
@@ -373,7 +373,7 @@ sudo apt-get autoremove
 
 II. Nginx for windowns
 1. Download at: http://nginx.org/en/download.html
-choose nginx/windowns-<version>
+choose nginx/windowns-`<version>`
 
 2. Unpack and use nginx by the ways double click nginx.exe
 
@@ -425,31 +425,31 @@ Tự động chạy ứng dụng Nodejs, tự động restart khi lỗi. PM2 cò
 
 
 // Khởi động lại ứng dụng thông qua app name
-pm2 restart <app_name>
+`pm2 restart <app_name>`
  
 // Tải lại lại ứng dụng thông qua app name
-pm2 reload <app_name>
+`pm2 reload <app_name>`
  
 // Dừng ứng dụng thông qua app name
-pm2 stop <app_name>
+`pm2 stop <app_name>`
  
 // Xóa ứng dụng thông qua app name
-pm2 delete <app_name>
+`pm2 delete <app_name>`
  
 // Khởi động lại ứng dụng thông qua app name
-pm2 restart <app_name>
+`pm2 restart <app_name>`
  
 // Tải lại lại ứng dụng thông qua app name
-pm2 reload <app_name>
+`pm2 reload <app_name>`
  
 // Dừng ứng dụng thông qua app name
-pm2 stop <app_name>
+`pm2 stop <app_name>`
  
 // Xóa tất cả ứng dụng đang chạy của Pm2
-pm2 kill
+`pm2 kill`
 
 // Xem nhật ký (logs) trong PM2
-pm2 logs
+`pm2 logs`
 
 
 
