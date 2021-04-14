@@ -58,8 +58,8 @@ Khi sử dụng docker
 - Container là một instance được sinh ra từ Docker Image
 - Mỗi khi bạn chạy command, Mỗi Image có thể được chạy bởi nhiều Container
 - Lấy ví dụ ở trong lập trình hướng đối tượng (OOP)
-+ `<Image>`là class
-+ `<Container>` sẽ là Object
+	- `<Image>`là class
+	- `<Container>` sẽ là Object
 - Mỗi container sẽ chạy tách biệt với nhau
 
 - ***`<Image>`***
@@ -77,13 +77,13 @@ Khi sử dụng docker
 5. Docker Architecture
 Ở trong Docker chúng ta có 2 thành phần chính là Docker Daemon và Docker Client:
 - Docker Daemon là một Process chạy ngầm ở Background thường sẽ là Systemd Service. 
-+ Docker Daemon sẽ cung cấp 1 REST API để Docker Client giao tiếp và thực hiện các tác vụ cần thiết.
-+ Docker Daemon sẽ quản lý quyền truy cập và quản lý trạng thái của các container và image trên hệ thống.
-+ Docker daemon mặc định sẽ sử dụng một UNIX Socket, mà chỉ User 'root' và các user thuộc Group 'docker' mới có thể access tới socket này
-+ Ngoài ra bạn có thể đổi UNIX Socket này thành TCP Port để các application bên ngoài hệ thống có thể truy cập tới Docker Daemon.
+	- Docker Daemon sẽ cung cấp 1 REST API để Docker Client giao tiếp và thực hiện các tác vụ cần thiết.
+	- Docker Daemon sẽ quản lý quyền truy cập và quản lý trạng thái của các container và image trên hệ thống.
+	- Docker daemon mặc định sẽ sử dụng một UNIX Socket, mà chỉ User 'root' và các user thuộc Group 'docker' mới có thể access tới socket này
+	- Ngoài ra bạn có thể đổi UNIX Socket này thành TCP Port để các application bên ngoài hệ thống có thể truy cập tới Docker Daemon.
 
 - Docker Client: chính là các command mà bạn gõ vào Terminal
-+ Docker Client sẽ giao tiếp với Docker Daemon bằng cách gửi HTTP Request tới REST API mà Docker Daemon cung cấp.
+	- Docker Client sẽ giao tiếp với Docker Daemon bằng cách gửi HTTP Request tới REST API mà Docker Daemon cung cấp.
 
 Ngoài Docker Daemon và Client chúng ta sẽ có một thành phần khác nữa gọi là Docker Registry. Đây là một service để lưu giữ các Docker Image. Nếu Docker Daemon của bạn có quyền truy cập tới một Docker Registry tải các Docker Image được lưu giữ ở trên Docker Registry đấy về máy tính của bạn. Điền hình chúng ta có Docker Hub
 - Public Registry được quản lý bởi Docker (công ty). Ngoài ra bạn có thể sử dụng các Docker Registry được cung cấp từ các Cloud Provider - AWS, GCP, Azure
@@ -93,13 +93,13 @@ Ngoài Docker Daemon và Client chúng ta sẽ có một thành phần khác n�
 - [ ] https://docker-ghichep.readthedocs.io/en/latest/dockerfile/
 
 ```javascript
-	Dockerfile là một chuỗi instruction mà bạn định nghĩa
-	Dockerfile cũng liên quan đến 1 khái niệm gọi là infrastructer at code
-	Để viết dockerfile nên có kiến thức về LINUX COMMANDS và SHELL SCRIPTING
+Dockerfile là một chuỗi instruction mà bạn định nghĩa
+Dockerfile cũng liên quan đến 1 khái niệm gọi là infrastructer at code
+Để viết dockerfile nên có kiến thức về LINUX COMMANDS và SHELL SCRIPTING
 ```
 
 - FROM: chỉ định base image mà mình dùng - `<image-name>:<tag>`
-> best practice: nên chỉ định tag và trành dùng tag latest để duy trì ổn định cho app
+	- best practice: nên chỉ định tag và trành dùng tag latest để duy trì ổn định cho app
 - LABEL: dùng để add các metadata vào image
 - ENV: tạo enviroment variable mà container sẽ sử dụng
 - WORKDIR: chỉ định directory hay context để docker chặn các instruction nằm phía sau workdir ở tại directory này
@@ -110,45 +110,45 @@ Ngoài Docker Daemon và Client chúng ta sẽ có một thành phần khác n�
 - ARG: tùy chỉnh dockerfile để truyền vào dockerfile 1 số variable
 - USER: nên tránh sử dụng user root
 - RUN: chạy linux comand
-> best practice: khi 1 lệnh run chạy sẽ tạo ra 1 image layer, giả sử trong dockerfile có nhiều lệnh run, nếu được hãy gộp các lệnh run vào 1 để giảm thiếu số lượng image layer sinh ra. Nếu làm được sẽ tiết kiệm được size hay curl của image, giảm thời gian build docker image
+	- best practice: khi 1 lệnh run chạy sẽ tạo ra 1 image layer, giả sử trong dockerfile có nhiều lệnh run, nếu được hãy gộp các lệnh run vào 1 để giảm thiếu số lượng image layer sinh ra. Nếu làm được sẽ tiết kiệm được size hay curl của image, giảm thời gian build docker image
 - CMD: định nghĩ 1 command sẽ chạy chi container start
 - ENTRYPOINT: giống CMD
-+nhưng khi chạy song song CMD và ENTRYPOINT thì ENTRYPOINT thành command mà container chạy và CMD thành tham số cho command đấy
+> nhưng khi chạy song song CMD và ENTRYPOINT thì ENTRYPOINT thành command mà container chạy và CMD thành tham số cho command đấy
 
 > Best-practice khi viết Dockerfile: Thứ tự viết các instruction chia làm 2 phần: ít thay đổi và hay thay đổi. Thì instruction ít thay đổi nên đặt phía trên và instruction hay thay đổi nên đặt phía dưới. Lý do làm vậy vì docker sẽ tiết kiệm thời gian sync lại các image layer cho nên sẽ tiết kiệm thời gian build lại image
 
 7. Docker command
 - [ ] https://docker-ghichep.readthedocs.io/en/latest/ghichep-lenh-docker/
 - Build Dockerfile: 
-+ docker image build -t `<image-name><context>`
-+ vd: docker image build -t demo-backend .
+	- docker image build -t `<image-name><context>`
+	- vd: docker image build -t demo-backend .
 
 - Check docker image on host machine
-+ docker image ls
+	- docker image ls
 
 - Check image layers of every docker image
-+ docker inspect image `<image-name>`
-+ vd: docker inspect image demo-backend
+	- docker inspect image `<image-name>`
+	- vd: docker inspect image demo-backend
 
 - Run a command in a new container
-+ docker container run [OPTIONS] IMAGE [COMMAND] [ARG...]
+	- docker container run [OPTIONS] IMAGE [COMMAND] [ARG...]
 
 - Check docker container running on system
-+ docker container ls
+	- docker container ls
 
 - Check docker container running and stop
-+ docker container ls -a
+	- docker container ls -a
 
 - Start docker container had stopped yet
-+ docker container start `<docker-name>`
-+ vd: docker container start demo-backend
+	- docker container start `<docker-name>`
+	- vd: docker container start demo-backend
 
 8. Lợi ích của Dockerfile - Inrastructure as Code + Immutable Infrastructure
 - Inrastructure as Code
-+ Quản lý run-time enviroment bằng code - Dockerfile
-+ Đóng gói Application code cùng với run-time enviroment + configuration trong 1 object là Docker image. Sau đó sử dụng docker image để deploy lên các server. Lúc này docker image không thay đổi nên application sẽ chạy ổn định trên các môi trường
+	- Quản lý run-time enviroment bằng code - Dockerfile
+	- Đóng gói Application code cùng với run-time enviroment + configuration trong 1 object là Docker image. Sau đó sử dụng docker image để deploy lên các server. Lúc này docker image không thay đổi nên application sẽ chạy ổn định trên các môi trường
 -  Immutable Infrastructure
-+ Đóng gọi trạng thái cuối cùng sau khi cài đặt run-time enviroment và configuration và application code và tạo thành image để deploy lên khác môi trường khác => Infrastructure sẽ không thay đổi
+	- Đóng gọi trạng thái cuối cùng sau khi cài đặt run-time enviroment và configuration và application code và tạo thành image để deploy lên khác môi trường khác => Infrastructure sẽ không thay đổi
 
 => Đây là 2 khái niệm quan trọng giúp application chạy ổn định giữa các môi trường 
 
@@ -156,12 +156,12 @@ Ngoài Docker Daemon và Client chúng ta sẽ có một thành phần khác n�
 định nghĩa các thành phần: `<Version>, <Services>, <Networks>, <Volumes>`
 - version: '3'
 - services
-+ service-name là alias mà docker-compose tự động networking giữa các service với nhau. Sau khi mapping thì có thể sử dụng tên service làm host name của container chạy service đấy
-+ volumes
-+ ports: 8080: 80 - Forwards the exposed port 80 của container sang port 8080 trên host machine.
-+ depends_on: định nghĩa service chạy trước khi chạy service hiện tại
-+ restart: định nghĩa restart hay không khi gặp lỗi 
-+ network
+	- service-name là alias mà docker-compose tự động networking giữa các service với nhau. Sau khi mapping thì có thể sử dụng tên service làm host name của container chạy service đấy
+	- volumes
+	- ports: 8080: 80 - Forwards the exposed port 80 của container sang port 8080 trên host machine.
+	- depends_on: định nghĩa service chạy trước khi chạy service hiện tại
+	- restart: định nghĩa restart hay không khi gặp lỗi 
+	- network
 
 10. docker-compose comands
 - docker-compose up : run docker ở chế độ dettack-mode - Ctrl+C để tắt
@@ -238,9 +238,9 @@ Ngữ cảnh upstream định nghĩa một pool của các server cái NGINX s�
 Hãy thử tưởng tượng bạn có một ứng dụng yêu cầu đăng nhập, nếu khi đăng nhập, session lưu trên Backend 1, sau một hồi request lại được chuyển tới Backend 2, trạng thái đăng nhập bị mất, hẳn là người dùng sẽ vô cùng nản. 
 - NGINX PLUS có cung cấp sticky directive, giúp NGINX tracks user sessions và đưa họ tới đúng upstream server.
 - Dùng ip_hash làm phương thức cân bằng tải
-+ Hash được sinh từ 3 chỉ số đầu của một IP, do đó tất cả IP trong cùng C-class network sẽ đc điều hướng tới cùng một backend.
-+ Tất cả user phía sau một NAT sẽ truy cập vào cùng một backend.
-+ Nếu ta thêm mới một backend, toàn bộ hash sẽ thay đổi, đương nhiên session sẽ mất.
+	- Hash được sinh từ 3 chỉ số đầu của một IP, do đó tất cả IP trong cùng C-class network sẽ đc điều hướng tới cùng một backend.
+	- Tất cả user phía sau một NAT sẽ truy cập vào cùng một backend.
+	- Nếu ta thêm mới một backend, toàn bộ hash sẽ thay đổi, đương nhiên session sẽ mất.
 
 9.  sendfile
 cho phép send file.
@@ -281,10 +281,10 @@ location optional_modifier location_match {
     . . .
 }
 - optional_modifier: bạn có thể tạm hiểu nó là kiểu so sánh để tìm ra để đối chiếu với location_match. Có mấy loại option như sau:
-+ (none): Nếu không khai báo gì thì NGINX sẽ hiểu là tất cả các request có URI bắt đầu bằng phần location_match sẽ được chuyển cho location block này xử lí.
-+ = : Khai báo này chỉ ra rằng URI phải có chính xác giống như location_match (giống như so sánh string bình thường).
-+ ~ : Sử dụng regular expression cho các URI
-+ ~* : Sử dụng regular expression cho các URI cho phép pass cả chữ hoa và chữ thường
+	- (none): Nếu không khai báo gì thì NGINX sẽ hiểu là tất cả các request có URI bắt đầu bằng phần location_match sẽ được chuyển cho location block này xử lí.
+	- = : Khai báo này chỉ ra rằng URI phải có chính xác giống như location_match (giống như so sánh string bình thường).
+	- ~ : Sử dụng regular expression cho các URI
+	- ~* : Sử dụng regular expression cho các URI cho phép pass cả chữ hoa và chữ thường
 
 16.1. index directive
 index direct nằm bên trong location luôn được nginx trỏ tới đầu tiên khi xử lí điều hướng request. Định nghĩa trang mặc định mà Nginx sẽ phục vụ nếu không có tên tập tin được chỉ rõ trong yêu cầu (nói cách khác, trang chỉ mục). Chúng ta có thể chỉ rõ nhiều tên tập tin và tập tin đầu tiên được tìm thấy sẽ được sử dụng. Nếu không có tập tin cụ thể nào được tìm thấy, Nginx sẽ hoặc là cố gắng phát sinh 1 chỉ mục tự động của các tập tin
