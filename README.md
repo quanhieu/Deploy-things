@@ -63,7 +63,7 @@ Khi sử dụng docker
 - Mỗi container sẽ chạy tách biệt với nhau
 
 <Image>
-https://docker-ghichep.readthedocs.io/en/latest/ghichep-docker-images/
+> https://docker-ghichep.readthedocs.io/en/latest/ghichep-docker-images/
 - Image sẽ là template được sử dụng để tạo Container
 - Trong Image sẽ chưa tất cả các Dependency Libraries, packages, configuration files và application code  để có thể chạy được application của bạn
 - Một image sẽ được cấu thành bởi nhiều Layer (các lớp). Mỗi layer sẽ tương ứng với một thay đổi trên FileSystem tính từ Base Image mà bạn sử dụng
@@ -71,7 +71,7 @@ https://docker-ghichep.readthedocs.io/en/latest/ghichep-docker-images/
 - là cơ chế cực kỳ khi sử dụng docker vì docker sẽ tái sử dụng image layer để giảm thời gian build docker image cũng như là size curl của 1 docker image
 
 <Volume>
-https://docker-ghichep.readthedocs.io/en/latest/volume/
+> https://docker-ghichep.readthedocs.io/en/latest/volume/
 - Volume trong Docker được dùng để chia sẻ dữ liệu cho container.
 
 5. Docker Architecture
@@ -90,7 +90,7 @@ Ngoài Docker Daemon và Client chúng ta sẽ có một thành phần khác n�
 - Bạn cũng có thể cài đặt 1 Docker Registry - On-premis - Private Network trong công ty bạn
 
 6. Giải thích Dockerfile
-https://docker-ghichep.readthedocs.io/en/latest/dockerfile/
+> https://docker-ghichep.readthedocs.io/en/latest/dockerfile/
 Dockerfile là một chuỗi instruction mà bạn định nghĩa
 Dockerfile cũng liên quan đến 1 khái niệm gọi là infrastructer at code
 Để viết dockerfile nên có kiến thức về LINUX COMMANDS và SHELL SCRIPTING
@@ -115,7 +115,7 @@ Dockerfile cũng liên quan đến 1 khái niệm gọi là infrastructer a
 -> Best-practice khi viết Dockerfile: Thứ tự viết các instruction chia làm 2 phần: ít thay đổi và hay thay đổi. Thì instruction ít thay đổi nên đặt phía trên và instruction hay thay đổi nên đặt phía dưới. Lý do làm vậy vì docker sẽ tiết kiệm thời gian sync lại các image layer cho nên sẽ tiết kiệm thời gian build lại image
 
 7. Docker command
-https://docker-ghichep.readthedocs.io/en/latest/ghichep-lenh-docker/
+> https://docker-ghichep.readthedocs.io/en/latest/ghichep-lenh-docker/
 - Build Dockerfile: 
 + docker image build -t <image-name><context>
 + vd: docker image build -t demo-backend .
@@ -177,11 +177,11 @@ https://docker-ghichep.readthedocs.io/en/latest/ghichep-lenh-docker/
 - docker logs -f <docker-name>
 
 Reference:
- https://youtube.com/playlist?list=PL28xQzrHZLIUMesZIulyOY0UEbUJhaQd6
- https://github.com/hocchudong/ghichep-docker
- https://github.com/hungviet99/ghichep_docker
- https://docker-ghichep.readthedocs.io/en/latest/README/
- https://github.com/chesterheng/microservices-node-react/blob/master/section-03.md
+ [**FullStacKAGE-Go Pro Docker**](https://youtube.com/playlist?list=PL28xQzrHZLIUMesZIulyOY0UEbUJhaQd6)
+ [**Docker ghi chep**](https://github.com/hocchudong/ghichep-docker)
+ [**Docker ghi chep**](https://github.com/hungviet99/ghichep_docker)
+ [**Docker ghi chep**](https://docker-ghichep.readthedocs.io/en/latest/README/)
+ [**Microservices-node-react**](https://github.com/chesterheng/microservices-node-react/blob/master/section-03.md)
 
 <!-- ==================================================================================================================== -->
 
