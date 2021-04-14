@@ -35,7 +35,7 @@
 	╚═ docker-compose.yml
 
 
-====================================================================================================================
+<!-- ==================================================================================================================== -->
 
 ## DOCKER
 
@@ -177,13 +177,13 @@ https://docker-ghichep.readthedocs.io/en/latest/ghichep-lenh-docker/
 - docker logs -f <docker-name>
 
 Reference:
-# https://youtube.com/playlist?list=PL28xQzrHZLIUMesZIulyOY0UEbUJhaQd6
-# https://github.com/hocchudong/ghichep-docker
-# https://github.com/hungviet99/ghichep_docker
-# https://docker-ghichep.readthedocs.io/en/latest/README/
-# https://github.com/chesterheng/microservices-node-react/blob/master/section-03.md
+ https://youtube.com/playlist?list=PL28xQzrHZLIUMesZIulyOY0UEbUJhaQd6
+ https://github.com/hocchudong/ghichep-docker
+ https://github.com/hungviet99/ghichep_docker
+ https://docker-ghichep.readthedocs.io/en/latest/README/
+ https://github.com/chesterheng/microservices-node-react/blob/master/section-03.md
 
-====================================================================================================================
+<!-- ==================================================================================================================== -->
 
 ## NGINX
 
@@ -404,7 +404,7 @@ logs\error.log
 III. Nginx in docker
 -- Updating --
 
-====================================================================================================================
+<!-- ==================================================================================================================== -->
 
 ## PM2
 
