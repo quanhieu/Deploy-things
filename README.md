@@ -54,7 +54,7 @@ Khi sử dụng docker
 - Microservice Pattern - Deploy Kubernetes
 
 4. Các khác niệm quan trọng Docker
-`<Container>`
+- ***`<Container>`***
 - Container là một instance được sinh ra từ Docker Image
 - Mỗi khi bạn chạy command, Mỗi Image có thể được chạy bởi nhiều Container
 - Lấy ví dụ ở trong lập trình hướng đối tượng (OOP)
@@ -62,7 +62,7 @@ Khi sử dụng docker
 + `<Container>` sẽ là Object
 - Mỗi container sẽ chạy tách biệt với nhau
 
-`<Image>`
+- ***`<Image>`***
 - [ ] https://docker-ghichep.readthedocs.io/en/latest/ghichep-docker-images/
 - Image sẽ là template được sử dụng để tạo Container
 - Trong Image sẽ chưa tất cả các Dependency Libraries, packages, configuration files và application code  để có thể chạy được application của bạn
@@ -70,7 +70,7 @@ Khi sử dụng docker
 `<Image layers>`
 - là cơ chế cực kỳ khi sử dụng docker vì docker sẽ tái sử dụng image layer để giảm thời gian build docker image cũng như là size curl của 1 docker image
 
-`<Volume>`
+- ***`<Volume>`***
 - [ ] https://docker-ghichep.readthedocs.io/en/latest/volume/
 - Volume trong Docker được dùng để chia sẻ dữ liệu cho container.
 
@@ -91,12 +91,15 @@ Ngoài Docker Daemon và Client chúng ta sẽ có một thành phần khác n�
 
 6. Giải thích Dockerfile
 - [ ] https://docker-ghichep.readthedocs.io/en/latest/dockerfile/
-Dockerfile là một chuỗi instruction mà bạn định nghĩa
-Dockerfile cũng liên quan đến 1 khái niệm gọi là infrastructer at code
-Để viết dockerfile nên có kiến thức về LINUX COMMANDS và SHELL SCRIPTING
+
+```javascript
+	Dockerfile là một chuỗi instruction mà bạn định nghĩa
+	Dockerfile cũng liên quan đến 1 khái niệm gọi là infrastructer at code
+	Để viết dockerfile nên có kiến thức về LINUX COMMANDS và SHELL SCRIPTING
+```
 
 - FROM: chỉ định base image mà mình dùng - `<image-name>:<tag>`
-+ bese practice: nên chỉ định tag và trành dùng tag latest để duy trì ổn định cho app
+> best practice: nên chỉ định tag và trành dùng tag latest để duy trì ổn định cho app
 - LABEL: dùng để add các metadata vào image
 - ENV: tạo enviroment variable mà container sẽ sử dụng
 - WORKDIR: chỉ định directory hay context để docker chặn các instruction nằm phía sau workdir ở tại directory này
@@ -107,12 +110,12 @@ Dockerfile cũng liên quan đến 1 khái niệm gọi là infrastructer a
 - ARG: tùy chỉnh dockerfile để truyền vào dockerfile 1 số variable
 - USER: nên tránh sử dụng user root
 - RUN: chạy linux comand
-+ best practice: khi 1 lệnh run chạy sẽ tạo ra 1 image layer, giả sử trong dockerfile có nhiều lệnh run, nếu được hãy gộp các lệnh run vào 1 để giảm thiếu số lượng image layer sinh ra. Nếu làm được sẽ tiết kiệm được size hay curl của image, giảm thời gian build docker image
+> best practice: khi 1 lệnh run chạy sẽ tạo ra 1 image layer, giả sử trong dockerfile có nhiều lệnh run, nếu được hãy gộp các lệnh run vào 1 để giảm thiếu số lượng image layer sinh ra. Nếu làm được sẽ tiết kiệm được size hay curl của image, giảm thời gian build docker image
 - CMD: định nghĩ 1 command sẽ chạy chi container start
 - ENTRYPOINT: giống CMD
 +nhưng khi chạy song song CMD và ENTRYPOINT thì ENTRYPOINT thành command mà container chạy và CMD thành tham số cho command đấy
 
--> Best-practice khi viết Dockerfile: Thứ tự viết các instruction chia làm 2 phần: ít thay đổi và hay thay đổi. Thì instruction ít thay đổi nên đặt phía trên và instruction hay thay đổi nên đặt phía dưới. Lý do làm vậy vì docker sẽ tiết kiệm thời gian sync lại các image layer cho nên sẽ tiết kiệm thời gian build lại image
+> Best-practice khi viết Dockerfile: Thứ tự viết các instruction chia làm 2 phần: ít thay đổi và hay thay đổi. Thì instruction ít thay đổi nên đặt phía trên và instruction hay thay đổi nên đặt phía dưới. Lý do làm vậy vì docker sẽ tiết kiệm thời gian sync lại các image layer cho nên sẽ tiết kiệm thời gian build lại image
 
 7. Docker command
 - [ ] https://docker-ghichep.readthedocs.io/en/latest/ghichep-lenh-docker/
