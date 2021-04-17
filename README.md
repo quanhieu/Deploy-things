@@ -190,6 +190,51 @@ Dockerfile cũng liên quan đến 1 khái niệm gọi là infrastructer a
 - docker-compose rm
 - docker logs -f `<docker-name>`
 
+11. Deploy container trên production - Container Orchestration
+- Container Orchestration là gì ?
+	- Giống như nhạc trưởng trong 1 dàn nhạc giao hưởng thì đối với 1 application sẽ bao gồm nhiều service con để hoạt động thì khi quản lí các thành phần con hay các service thì cần tới Orchestration
+- Feature:
+	- Container Deployment: Deploy container sau đó chạy và dựng container trên mỗi cluster node
+	- Schedule: Lên lịch để sử lí các khối lượng công việc hay để xử lí các khối lượng công việc work load trên mỗi cluster node
+	- Scaling: Thay đổi số lượng container tùy thuộc vào số lượng công việc (work load) 
+	- Networking: Liên kết các service
+	- Service Discovery: Tìm kiếm các service ở trong cùng application
+	- Resource Allocation: Phân bổ khố lượng tài nguyên vào container
+	- Heal Monitoring: Kiểm soát trạng thái hoạt động or up-time trong container
+- Lợi ích khi sử dụng container Orchestration:
+	- High Availability: Tăng cao tính khả dụng của toàn cluster
+	- Tối ưu hóa Computing Resurces của toàn cluster - vd: tối ưu hóa hiệu suất cpu
+	- Tự động hóa Deployment
+
+12. Các công cụ Container Orchestration phổ biến
+- Docker Swarm 
+	- nó được cài đặt kèm docker và có cách sử tương tự docker-compose
+	- sử dụng cho application quy mô nhỏ hoặc vừa
+- Apache Mesos
+	- là công cụ quản lí cluster có thể sử dụng với nhiều mục đích khác nhau. Ta có thể sử dụng Apache Mesos để thao tác quản lí với vitual machine cũng như container
+	- Các thành phần chính:
+		- Master: quản lí các Agent chạy ở các cluster node
+			- khi chạy Apache Mesos ở chế độ high availability sẽ có nhiều master. Lúc này Apache Mesos sẻ dùng ZooKeeper để quản lí các master. Nhiệm vụ của Zookeeper là chọn ra 1 master chạy ở chế độ active còn các master khạc chạy ở chế độ stand-by (chế độ backup). Khi active master chết thì Zookeeper sẽ lựa chọn ra 1 stand-by master thành active master để duy trì hoạt động của toàn hệ thống
+		- Agents: sẽ được cài đặt ở toàn bộ cluster node. Nhiệm vụ là cũng cấp các thông tin về resource vd Cpu, Ram tới master 
+		- Frameworks: chạy trên mesos.
+			- Schedule: nhiệm vụ truy vấn tới mater thông tin về các resource có thể sử dụng và sau khi đã lựa chọn xong cái resource mà framework sẽ sử dụng thì sẽ gửi nội dung task của framework đấy tới master
+			- Excuter: sẽ chạy các task do framework cung cấp
+	- Khi sử dụng Apache Mesos thì phải kèm nhiều framworks khác
+		- Apache Aurora để quản lí các service chạy liên tục cũng như cron-tab
+		- Chronos là framwork để chạy và quản lí các cron-job thay thế cho cron-tab
+		- Mesosphere marathon là 1 công cụ container orchestration để quản lí các container trên mesos
+		- Có thể chạy Kubernetes trên Apache Mesos
+- Kubernetes (k8s)
+	- Thành phần chính của Kubernetes cluster
+		- Control Plane (master node), 
+			- api để giao tiếp với các worker node
+			- etcd: để lưu trữ dữ liệu cũng như config của cluster
+			- schedule để lên lịch và chạy các work load trên các cluster node hay work load
+			...
+		- Worker node
+			- Kubelet là thành phần quản lí các container chạy trên worker node
+			- Kube-proxy là thành phần quản lí networking giữa worker node và master
+
 Reference:
  - [ ] [**FullStacKAGE-Go Pro Docker**](https://youtube.com/playlist?list=PL28xQzrHZLIUMesZIulyOY0UEbUJhaQd6)
 
